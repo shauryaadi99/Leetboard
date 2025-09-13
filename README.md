@@ -1,97 +1,68 @@
-📊 LeetCode Question Dashboard
+# 📊 LeetCode Question Dashboard
 
-A simple browser-based LeetCode question tracking dashboard built with:
+A simple browser-based **:contentReference[oaicite:1]{index=1}** question tracking dashboard built with:
 
-🌐 Vanilla JavaScript
+- 🌐 Vanilla :contentReference[oaicite:2]{index=2}  
+- 🎨 :contentReference[oaicite:3]{index=3} (via CDN)  
+- 📁 :contentReference[oaicite:4]{index=4} for CSV parsing  
+- 💾 Browser `localStorage` for saving progress  
 
-🎨 Tailwind CSS (via CDN)
+No build tools or backend needed — just one HTML file.  
+Easily host it using **:contentReference[oaicite:5]{index=5}**.
 
-📁 PapaParse for CSV parsing
+---
 
-💾 Browser localStorage for saving progress
+## ✨ Features
 
-No build tools or backend needed — just one HTML file.
-Easily host it using GitHub Pages.
+- 📤 Upload CSV files of questions  
+- 🏢 Set and display company name  
+- ✅ Mark questions as done  
+- 📝 Add personal notes for each question  
+- 💾 All progress is auto-saved to `localStorage`  
+- ⚡ Works fully offline after first load  
+- ♻️ Reset dashboard anytime  
 
-✨ Features
+---
 
-📤 Upload CSV files of questions
+## 🖼 Example CSV Format
 
-🏢 Set and display company name
+Your CSV should have these columns (**case-sensitive**):
 
-✅ Mark questions as done
+| Title       | Difficulty | Frequency | Acceptance Rate | Link                       | Topics               |
+|-------------|-------------|-------------|-------------|-------------|-------------|
+| Two Sum     | Easy        | High        | 0.48          | https://leetcode.com/...  | Array, Hash Table     |
+| ...         | ...          | ...          | ...            | ...                                     | ...                               |
 
-📝 Add personal notes for each question
+> **Note:** `Acceptance Rate` should be a decimal (e.g. `0.48`) — it will show as `48.00%` in the table.
 
-💾 All progress is auto-saved to localStorage
+---
 
-⚡ Works fully offline after first load
+## 🚀 How to Use
 
-♻️ Reset dashboard anytime
+### 1. Upload CSV
+- Click **“Upload CSV”** and select your questions file.
+- The data will be stored in your browser’s `localStorage`.
 
-🖼 Example CSV Format
+### 2. Enter Company Name
+- Type in the text box to set the company name shown above the table.
 
-Your CSV should have these columns (case-sensitive):
+### 3. Track Progress
+- Mark questions done ✅
+- Add notes 📝
+- All changes are saved automatically.
 
-Title	Difficulty	Frequency	Acceptance Rate	Link	Topics
-Two Sum	Easy	High	0.48	https://leetcode.com/
-...	Array, Hash Table
-...	...	...	...	...	...
+### 4. Reset Dashboard
+- Click **“Reset Dashboard”** to clear all saved data.
 
-Acceptance Rate should be a decimal (e.g. 0.48) — it will show as 48.00% in the table.
+---
 
-🚀 How to Use
+## ⚡ Notes
+- All data is stored locally in your browser
+- Your progress is preserved across refreshes and browser restarts
+- If you open the page on a different browser/device, or clear your browser data, you’ll need to upload the CSV again
 
-Upload CSV
+---
 
-Click “Upload CSV” and select your questions file.
-
-The data will be stored in your browser’s localStorage.
-
-Enter Company Name
-
-Type in the text box to set the company name shown above the table.
-
-Track Progress
-
-Mark questions done ✅
-
-Add notes 📝
-
-All changes are saved automatically.
-
-Reset Dashboard
-
-Click “Reset Dashboard” to clear all saved data.
-
-🌐 Hosting on GitHub Pages
-
-Create a new repository
-
-Add the single index.html file to the repo root
-
-Go to Settings → Pages
-
-Under Build and deployment, choose:
-
-Source: Deploy from branch
-
-Branch: main → / (root)
-
-Click Save
-
-Your site will be available at
-https://<your-username>.github.io/<repo-name>/
-
-⚠️ Notes
-
-All data is stored locally in the browser via localStorage
-
-Your progress is preserved on refresh and browser restarts
-
-If you open the page on a different browser/device, or clear your browser data, you’ll need to upload the CSV again
-
-📜 License
-
-This project is open source and free to use.
+## 📜 License
+This project is open source and free to use.  
 Feel free to customize it for your own interview prep!
