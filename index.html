@@ -131,7 +131,6 @@
     // Render table
     function renderTable(data) {
       if (!data.length) return;
-      // ✨ CHANGED: Added '#' to the headers array
       const headers = ["#","Done","Difficulty","Title","Frequency","Acceptance Rate","Link","Topics","Notes"];
       let html = `
         <div class="overflow-x-auto bg-white shadow-xl rounded-lg">
@@ -155,7 +154,19 @@
                 <td class="px-4 py-3">
                   <a href="${q.Link || '#'}" target="_blank" rel="noreferrer" class="text-blue-600 hover:underline">Open</a>
                 </td>
-                <td class="px-4 py-3">${q.Topics || ''}</td>
+                
+                <td class="px-4 py-3 align-top">
+                  ${q.Topics && q.Topics.trim() ? `
+                    <button class="toggle-topics flex items-center gap-1 text-blue-600 hover:text-blue-800">
+                      <span class="font-medium">View</span>
+                      <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 transition-transform" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" /></svg>
+                    </button>
+                    <div class="topics-container hidden mt-2 flex flex-wrap gap-1">
+                      ${q.Topics.split(',').map(topic => topic.trim() ? `<span class="bg-gray-200 text-gray-700 text-xs font-medium px-2 py-0.5 rounded-full">${topic.trim()}</span>` : '').join('')}
+                    </div>
+                  ` : '<span class="text-gray-400">N/A</span>'}
+                </td>
+                
                 <td class="px-4 py-3">
                   <textarea rows="2" class="noteBox w-full rounded-md border border-gray-300 focus:border-blue-400 focus:ring focus:ring-blue-100 text-sm p-1" placeholder="Your notes...">${q.notes || ''}</textarea>
                 </td>
@@ -172,7 +183,19 @@
         const id = parseInt(row.dataset.id);
         const checkbox = row.querySelector('.doneCheck');
         const noteBox = row.querySelector('.noteBox');
+        
+        // ✨ ADDED: Event listener for the new topics toggle button
+        const topicsButton = row.querySelector('.toggle-topics');
+        const topicsContainer = row.querySelector('.topics-container');
+        const arrowIcon = topicsButton?.querySelector('svg');
 
+        if (topicsButton) {
+          topicsButton.addEventListener('click', () => {
+            topicsContainer.classList.toggle('hidden');
+            arrowIcon.classList.toggle('rotate-180');
+          });
+        }
+        
         checkbox.addEventListener('change', () => {
           data[id].done = checkbox.checked;
           row.classList.toggle('bg-blue-50', checkbox.checked);
